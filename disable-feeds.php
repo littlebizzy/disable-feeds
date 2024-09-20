@@ -63,41 +63,10 @@ remove_action( 'wp_head', 'feed_links', 2 );
 remove_action( 'wp_head', 'feed_links_extra', 3 );
 
 // Disable feed discovery HTTP headers
-remove_action( 'wp', 'wp_shortlink_header', 11 );
-remove_action( 'template_redirect', 'wp_shortlink_header', 11 );
-remove_action( 'template_redirect', 'rest_output_link_header', 11 );
-remove_action( 'template_redirect', 'rest_output_link_wp_head', 10 );
-
-// Disable REST API output link
-remove_action( 'rest_api_init', 'wp_oembed_register_route' );
-remove_action( 'wp_head', 'rest_output_link_wp_head', 10 );
-remove_action( 'template_redirect', 'rest_output_link_header', 11 );
-
-// Disable oEmbed functionality
-remove_action( 'wp_head', 'wp_oembed_add_discovery_links' );
-remove_action( 'wp_head', 'wp_oembed_add_host_js' );
-remove_action( 'wp_head', 'rest_output_link_wp_head' );
+remove_action( 'template_redirect', 'feed_links' );
+remove_action( 'template_redirect', 'feed_links_extra' );
 
 // Disable comment feeds
 add_filter( 'feed_links_show_comments_feed', '__return_false' );
-
-// Remove feed links from the admin bar
-add_action( 'admin_bar_menu', function( $wp_admin_bar ) {
-    $wp_admin_bar->remove_node( 'view-site' );
-}, 999 );
-
-// Disable RSS and Atom API functions
-add_filter( 'wp_headers', function( $headers ) {
-    if ( isset( $headers['X-Pingback'] ) ) {
-        unset( $headers['X-Pingback'] );
-    }
-    return $headers;
-});
-
-// Disable Atom and RDF
-remove_action( 'rdf_header', 'the_generator' );
-remove_action( 'rss2_head', 'the_generator' );
-remove_action( 'rss_head', 'the_generator' );
-remove_action( 'atom_head', 'the_generator' );
 
 // Ref: ChatGPT
