@@ -22,7 +22,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 add_filter( 'gu_override_dot_org', function( $overrides ) {
     $overrides[] = 'disable-feeds/disable-feeds.php';
     return $overrides;
-});
+}, 999 );
 
 // Disable all RSS Feeds and redirect to the parent URL
 function disable_all_feeds() {
