@@ -4,6 +4,9 @@ Disables RSS and 301s to parent
 
 ## Changelog
 
+### 1.0.1
+- added `Requires PHP` plugin header
+
 ### 1.0.0
 - supports Git Updater
 - supports PHP 7.0 to PHP 8.3
