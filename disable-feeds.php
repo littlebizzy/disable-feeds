@@ -3,22 +3,22 @@
 Plugin Name: Disable Feeds
 Plugin URI: https://www.littlebizzy.com/plugins/disable-feeds
 Description: Disables RSS and 301s to parent
-Version: 1.0.0
+Version: 1.0.1
+Requires PHP: 7.0
 Author: LittleBizzy
 Author URI: https://www.littlebizzy.com
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 GitHub Plugin URI: littlebizzy/disable-feeds
 Primary Branch: master
-Tested up to: 6.6
 */
 
-// Prevent direct access
+// prevent direct access
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-// Disable WordPress.org updates for this plugin
+// disable wordpress.org updates for this plugin
 add_filter( 'gu_override_dot_org', function( $overrides ) {
     $overrides[] = 'disable-feeds/disable-feeds.php';
     return $overrides;
